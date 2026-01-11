@@ -74,66 +74,13 @@ pip install -e .
 yo setup
 ```
 
-**Important:** You must activate the venv (`source venv/bin/activate`) each time you open a new terminal to use the `yo` command.
-
-### Method 3: System-wide Installation from Source
-
-**Best for:** System-wide access without venv activation
-
-```bash
-git clone <repo-url>
-cd yoda
-pip install --user -e .
-```
-
-**Troubleshooting:** If `yo` command is not found after installation:
-
-```bash
-# Check where yo was installed
-python3 -m site --user-base
-
-# Add to your ~/.zshrc or ~/.bashrc:
-export PATH="$(python3 -m site --user-base)/bin:$PATH"
-
-# Reload shell
-source ~/.zshrc  # or ~/.bashrc
-```
-
-**Note:** Using pipx (Method 1) avoids this PATH issue entirely.
-
-### Method 4: Run Directly (No Install)
-
-**Best for:** Quick testing without installation
-
-```bash
-git clone <repo-url>
-cd yoda
-python3 -m yoda.cli setup  # One-time setup
-python3 -m yoda.cli add "My note"  # Usage
-```
-
-With this method, use `python3 -m yoda.cli` instead of `yo` for all commands.
-
-## Quick Start After Installation
-
-Once installed, configure your notes directory:
-
-```bash
-# If using venv (Method 2), activate first:
-source venv/bin/activate
-
-# Run setup and start using
-yo setup                # Choose where to store notes
-yo add "First note"     # Start using it
-```
-
-## Directory Structure
-
-- **User data** - By default `~/yoda-home` (configurable during setup)
+**Important:** You must activate the venv each time you open a new terminal to use the `yo` command.
 
 ## Usage
 
 **Note:** If you installed using Method 2 (venv), make sure to activate it first: `source venv/bin/activate`
+
+Once installed, just say `yo` and it will guide you with the options. `you setup` does the initial folder setup
 
 ### Add entries to inbox
 ```bash
@@ -141,7 +88,7 @@ yo add "Meeting notes: discussed project timeline"
 yo add "TODO: Review pull request"
 ```
 
-Appends timestamped entries to `~/yoda-home/inbox.md`:
+Appends timestamped entries to `inbox.md`:
 ```
 - [2026-01-11 17:30:45] Meeting notes: discussed project timeline
 ```
@@ -169,26 +116,7 @@ Shows two sections:
 1. Contents of `logs/YYYY-MM-DD.md` (today's log file, if exists)
 2. Any other files that mention today's date
 
-## Repository Structure
-
-```
-yoda/                  # Repository root
-├── pyproject.toml     # Package configuration
-├── yoda/              # Python package
-│   ├── __init__.py
-│   └── cli.py         # Main CLI code
-└── README.md
-
-~/yoda-home/           # User data (default location, configurable)
-├── inbox.md           # Quick capture (created on first use)
-├── logs/              # Daily logs (created on demand)
-│   └── YYYY-MM-DD.md
-├── projects/          # Your organization
-└── ...
-```
----
-
-## What may come later
+## What's in the roadmap?
 
 Future phases may introduce optional AI-assisted commands, for example:
 
