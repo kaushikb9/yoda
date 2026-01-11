@@ -2,27 +2,58 @@
 
 Minimal local-first CLI for managing notes and tasks.
 
+## Installation
+
+### Using pipx (Recommended)
+
+```bash
+pipx install yoda-notes
+yo setup
+```
+
+That's it! The `yo` command is now available globally.
+
+### From Source
+
+For development or if you prefer:
+
+```bash
+git clone <repo-url>
+cd yoda
+pip install -e .
+yo setup
+```
+
+### Alternative: Run Directly from Source
+
+If you don't want to install:
+
+1. Clone this repository:
+   ```bash
+   git clone <repo-url> ~/yoda
+   cd ~/yoda
+   ```
+
+2. Make executable and run setup:
+   ```bash
+   chmod +x yo
+   ./yo setup
+   ```
+
+3. Follow the setup prompts to configure PATH
+
+## Quick Start After Installation
+
+Once installed, configure your notes directory:
+
+```bash
+yo setup          # Choose where to store notes
+yo add "First note"    # Start using it
+```
+
 ## Directory Structure
 
-- **`~/Code/yoda`** - Application code (this repository)
-- **`~/yoda-home`** - User data (notes, logs, inbox)
-
-## Setup
-
-1. Ensure Python 3.6+ is installed
-2. Clone this repository to `~/Code/yoda`
-3. Make the CLI executable:
-   ```bash
-   chmod +x ~/Code/yoda/yo
-   ```
-4. Add to your PATH by adding this line to `~/.zshrc` or `~/.bashrc`:
-   ```bash
-   export PATH="$HOME/Code/yoda:$PATH"
-   ```
-5. Reload your shell:
-   ```bash
-   source ~/.zshrc  # or source ~/.bashrc
-   ```
+- **User data** - By default `~/yoda-home` (configurable during setup)
 
 ## Usage
 
@@ -43,12 +74,12 @@ yo search "meeting"
 yo search "TODO"
 ```
 
-Searches all markdown files in `~/yoda-home` (case-insensitive).
+Searches all markdown files in your notes directory (case-insensitive).
 
-Output format:
+Output format (shows relative paths):
 ```
-/Users/kb/yoda-home/inbox.md:3:- [2026-01-11 17:30:45] Meeting notes
-/Users/kb/yoda-home/projects/work.md:12:## Meeting agenda
+inbox.md:3:- [2026-01-11 17:30:45] Meeting notes
+projects/work.md:12:## Meeting agenda
 ```
 
 ### View today's activity
@@ -57,23 +88,25 @@ yo today
 ```
 
 Shows two sections:
-1. Contents of `~/yoda-home/logs/YYYY-MM-DD.md` (today's log file)
+1. Contents of `logs/YYYY-MM-DD.md` (today's log file, if exists)
 2. Any other files that mention today's date
 
-## File Structure
+## Repository Structure
 
 ```
-~/Code/yoda/
-├── yo                 # Main executable
-├── requirements.txt   # Empty (stdlib only)
-└── README.md          # This file
+yoda/                  # Repository root
+├── pyproject.toml     # Package configuration
+├── yoda/              # Python package
+│   ├── __init__.py
+│   └── cli.py         # Main CLI code
+└── README.md
 
-~/yoda-home/           # User data directory (managed by you)
-├── inbox.md          # Quick capture
-├── logs/
-│   └── YYYY-MM-DD.md # Daily logs
-├── projects/         # Project notes
-└── ...               # Your organization
+~/yoda-home/           # User data (default location, configurable)
+├── inbox.md           # Quick capture (created on first use)
+├── logs/              # Daily logs (created on demand)
+│   └── YYYY-MM-DD.md
+├── projects/          # Your organization
+└── ...
 ```
 
 ## No Dependencies

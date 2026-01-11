@@ -1,0 +1,14 @@
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "yoda-notes"
+version = "0.1.0"
+description = "Minimal local-first CLI for managing notes and tasks"
+requires-python = ">=3.6"
+readme = "README.md"
+license = {text = "MIT"}
+
+[project.scripts]
+yo = "yoda.cli:main"
