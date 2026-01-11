@@ -20,7 +20,6 @@ Most note/todo tools either:
 
 You can always edit, move, and manage your notes manually without breaking anything.
 
----
 
 ## Core principles
 
@@ -28,9 +27,6 @@ You can always edit, move, and manage your notes manually without breaking anyth
 - **Markdown as source of truth** — you can edit files directly.  
 - **Minimal and boring** — no databases, no sync, no hidden logic.  
 - **Explicit AI** — nothing uses AI unless you ask.  
-- **Trust over features** — CLI shouldn’t surprise you.
-
-These principles guide design and future additions.
 
 ---
 
@@ -190,7 +186,13 @@ yoda/                  # Repository root
 ├── projects/          # Your organization
 └── ...
 ```
+---
 
-## No Dependencies
+## What may come later
 
-This CLI uses only Python standard library. No external packages required.
+Future phases may introduce optional AI-assisted commands, for example:
+
+- summarizing recent notes
+- reflecting on themes
+- surfacing open todos
+- generating concise summaries
