@@ -1,4 +1,4 @@
-# yoda (`yo`)
+# yoda / yo
 
 `yoda` is a **local-first, minimal CLI** for capturing thoughts, todos, and simple notes in plain Markdown files.
 
