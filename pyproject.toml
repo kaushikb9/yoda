@@ -6,18 +6,15 @@ build-backend = "setuptools.build_meta"
 name = "yoda-notes"
 version = "0.1.0"
 description = "Minimal local-first CLI for managing notes and tasks"
-requires-python = ">=3.6"
+requires-python = ">=3.8"
 readme = "README.md"
-license = {text = "MIT"}
+license = "MIT"
 keywords = ["notes", "cli", "local-first", "markdown", "productivity"]
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Environment :: Console",
     "Intended Audience :: End Users/Desktop",
-    "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.6",
-    "Programming Language :: Python :: 3.7",
     "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
@@ -29,3 +26,6 @@ classifiers = [
 
 [project.scripts]
 yo = "yoda.cli:main"
+
+[tool.setuptools]
+packages = ["yoda"]
