@@ -24,23 +24,18 @@ pip install -e .
 yo setup
 ```
 
-### Alternative: Run Directly from Source
+### Alternative: Run Directly (No Install)
 
-If you don't want to install:
+If you don't want to install but still use it:
 
-1. Clone this repository:
-   ```bash
-   git clone <repo-url> ~/yoda
-   cd ~/yoda
-   ```
+```bash
+git clone <repo-url>
+cd yoda
+python3 -m yoda.cli setup  # One-time setup
+python3 -m yoda.cli add "My note"  # Usage
+```
 
-2. Make executable and run setup:
-   ```bash
-   chmod +x yo
-   ./yo setup
-   ```
-
-3. Follow the setup prompts to configure PATH
+Note: Without installation, you must use `python3 -m yoda.cli` instead of `yo`.
 
 ## Quick Start After Installation
 
