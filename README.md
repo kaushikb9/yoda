@@ -1,32 +1,113 @@
-# yoda
+# yoda (`yo`)
 
-Minimal local-first CLI for managing notes and tasks.
+`yoda` is a **local-first, minimal CLI** for capturing thoughts, todos, and simple notes in plain Markdown files.
+
+The goal is utility first — **your files remain yours** — with no heavy structure or hidden databases.  
+AI and automation are *explicit and opt-in*.
+
+---
+
+## Why this exists
+
+Most note/todo tools either:
+
+- enforce rigid structure, or  
+- hide your files in opaque databases, or  
+- auto-organize in ways you don’t control
+
+`yoda` tries a different path:  
+**lean, predictable, and file-centric**.
+
+You can always edit, move, and manage your notes manually without breaking anything.
+
+---
+
+## Core principles
+
+- **Local-first** — data lives on your filesystem.  
+- **Markdown as source of truth** — you can edit files directly.  
+- **Minimal and boring** — no databases, no sync, no hidden logic.  
+- **Explicit AI** — nothing uses AI unless you ask.  
+- **Trust over features** — CLI shouldn’t surprise you.
+
+These principles guide design and future additions.
+
+---
+
+## Current status (Phase 1)
+
+Phase 1 is all about basic capture and retrieval.
+
+Basic commands are supported:
+
+```
+yo add "some thought or todo"
+yo search "keyword"
+yo today
+```
 
 ## Installation
 
-### Using pipx (Recommended)
+### Method 1: pipx (Recommended for most users)
+
+**Best for:** Global installation without conflicts
 
 ```bash
 pipx install yoda-notes
 yo setup
 ```
 
-That's it! The `yo` command is now available globally.
+The `yo` command is now available globally. pipx automatically handles PATH configuration.
 
-### From Source
+### Method 2: From Source with Virtual Environment (Recommended for development)
 
-For development or if you prefer:
+**Best for:** Development or testing changes locally
 
 ```bash
 git clone <repo-url>
 cd yoda
+
+# Create and activate virtual environment
+python3 -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# Install in editable mode
 pip install -e .
+
+# Use yo (only while venv is activated)
 yo setup
 ```
 
-### Alternative: Run Directly (No Install)
+**Important:** You must activate the venv (`source venv/bin/activate`) each time you open a new terminal to use the `yo` command.
 
-If you don't want to install but still use it:
+### Method 3: System-wide Installation from Source
+
+**Best for:** System-wide access without venv activation
+
+```bash
+git clone <repo-url>
+cd yoda
+pip install --user -e .
+```
+
+**Troubleshooting:** If `yo` command is not found after installation:
+
+```bash
+# Check where yo was installed
+python3 -m site --user-base
+
+# Add to your ~/.zshrc or ~/.bashrc:
+export PATH="$(python3 -m site --user-base)/bin:$PATH"
+
+# Reload shell
+source ~/.zshrc  # or ~/.bashrc
+```
+
+**Note:** Using pipx (Method 1) avoids this PATH issue entirely.
+
+### Method 4: Run Directly (No Install)
+
+**Best for:** Quick testing without installation
 
 ```bash
 git clone <repo-url>
@@ -35,15 +116,19 @@ python3 -m yoda.cli setup  # One-time setup
 python3 -m yoda.cli add "My note"  # Usage
 ```
 
-Note: Without installation, you must use `python3 -m yoda.cli` instead of `yo`.
+With this method, use `python3 -m yoda.cli` instead of `yo` for all commands.
 
 ## Quick Start After Installation
 
 Once installed, configure your notes directory:
 
 ```bash
-yo setup          # Choose where to store notes
-yo add "First note"    # Start using it
+# If using venv (Method 2), activate first:
+source venv/bin/activate
+
+# Run setup and start using
+yo setup                # Choose where to store notes
+yo add "First note"     # Start using it
 ```
 
 ## Directory Structure
@@ -51,6 +136,8 @@ yo add "First note"    # Start using it
 - **User data** - By default `~/yoda-home` (configurable during setup)
 
 ## Usage
+
+**Note:** If you installed using Method 2 (venv), make sure to activate it first: `source venv/bin/activate`
 
 ### Add entries to inbox
 ```bash
